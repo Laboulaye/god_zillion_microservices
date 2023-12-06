@@ -21,7 +21,6 @@ public class TokenValidator implements ConstraintValidator<ValidToken, String> {
 
             // Convert the decoded bytes to a string
             String decodedString = new String(decodedBytes, StandardCharsets.UTF_8);
-            System.out.println(decodedString);
             // Attempt to parse the string as a UUID
             UUID uuid = UUID.fromString(decodedString);
 

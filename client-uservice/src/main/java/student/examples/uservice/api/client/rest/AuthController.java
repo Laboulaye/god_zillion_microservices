@@ -25,14 +25,10 @@ public class AuthController {
 		
 		
 		Map<String, String> mapa = new HashMap<String, String>();
-		mapa.put(
-				"message", 
-				String.format("an email has been sent to %s, please verify and activate your account",
-						userDto.getEmail()
+		mapa.put("message", 
+				String.format("an email has been sent to %s, please verify and activate your account", userDto.getEmail()
 		));
-		RestResponse response = new RestSuccessResponse(
-				200, 
-				mapa);
+		RestResponse response = new RestSuccessResponse(200, mapa);
 		
 		return response;
 	}
@@ -43,8 +39,13 @@ public class AuthController {
 	}
 	
 	@PostMapping("/signout")
-	public void signout(@Valid @RequestBody UserSignoutRequest userDto) {
+	public RestResponse signout(@Valid @RequestBody UserSignoutRequest userDto) {
+		Map<String, String> mapa = new HashMap<String, String>();
+		mapa.put("message", 
+				String.format("User successfully signed out"));
+		RestResponse response = new RestSuccessResponse(200, mapa);
 		
+		return response;
 	}
 
 }

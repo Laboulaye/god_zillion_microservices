@@ -1,0 +1,17 @@
+syntax="proto3";
+package student.examples.grpc;
+
+message UserSignupDtoRequest {
+	string id = 1;
+    string userName = 2;
+    string email = 3;
+    string password = 4;
+}
+
+message UserSignupResponse {
+    string greeting = 1;
+}
+
+service UserSignupService {
+  rpc signup(UserSignupDtoRequest) returns (UserSignupResponse);
+}

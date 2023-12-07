@@ -32,7 +32,7 @@ public class AuthControllerTest {
 	@Test
 	public void passwordValidTest() {
 	    
-		UserSignupRequest userDto = new UserSignupRequest("John", "john@mail.com", "", "passWord!3");
+		UserSignupRequest userDto = new UserSignupRequest(null, "John", "john@mail.com", "", "passWord!3");
 		
 		Set<ConstraintViolation<UserSignupRequest>> violations = validator.validateProperty(userDto, "password");
 		

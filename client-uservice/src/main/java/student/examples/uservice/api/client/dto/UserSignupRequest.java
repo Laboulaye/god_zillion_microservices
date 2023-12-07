@@ -9,7 +9,6 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
 @Getter
 public class UserSignupRequest {
 	

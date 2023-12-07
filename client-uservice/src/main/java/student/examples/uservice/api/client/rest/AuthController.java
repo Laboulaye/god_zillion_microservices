@@ -21,7 +21,7 @@ import student.examples.uservice.api.client.dto.UserSignupRequest;
 public class AuthController {
 	
 	@PostMapping("/signup")
-	public RestResponse signup(@Valid @RequestBody UserSignupRequest userDto, BindingResult bindingResult) {
+	public RestResponse signup(@Valid @RequestBody UserSignupRequest userDto) {
 		
 		
 		Map<String, String> mapa = new HashMap<String, String>();

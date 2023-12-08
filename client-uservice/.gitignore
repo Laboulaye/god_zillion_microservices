@@ -8,6 +8,7 @@ target/
 mvnw
 mvnw.cmd
 /src/main/resources/key/
+/src/test/resources/
 
 
 ### STS ###

@@ -45,7 +45,7 @@ public class AuthControllerTest {
 	    validator = validatorFactory.getValidator();
 	    errorsText = new ArrayList<>();
 	    
-	    getDataFromRemoteRepo();
+//	    getDataFromRemoteRepo();
 	}
 	
 
@@ -85,11 +85,6 @@ public class AuthControllerTest {
 		
         Assertions.assertFalse(violations.isEmpty());
 		
-	}
-	
-	@Test
-	public void nothingTest() {
-		Assertions.assertTrue(true);
 	}
 	
 	/**

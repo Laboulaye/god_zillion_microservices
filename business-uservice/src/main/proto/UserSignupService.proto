@@ -2,16 +2,17 @@ syntax="proto3";
 package student.examples.grpc;
 
 message UserSignupDtoRequest {
-	string id = 1;
-    string userName = 2;
-    string email = 3;
-    string password = 4;
+    string userName = 1;
+    string email = 2;
+    string password = 3;
+    string token = 4;
 }
 
 message UserSignupResponse {
-    string greeting = 1;
+    string message = 1;
 }
 
 service UserSignupService {
   rpc signup(UserSignupDtoRequest) returns (UserSignupResponse);
+  rpc confirmSignup(UserSignupDtoRequest) returns (UserSignupResponse);
 }

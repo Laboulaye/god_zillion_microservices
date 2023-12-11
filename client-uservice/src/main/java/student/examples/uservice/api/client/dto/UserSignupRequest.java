@@ -28,5 +28,8 @@ public class UserSignupRequest {
 	
 	@NotBlank(message = "Confirmation password is mandatory")
 	private String passwordConfirmation;
+	
+	private String token;
+	
 
 }

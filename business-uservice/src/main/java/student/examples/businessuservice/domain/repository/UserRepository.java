@@ -10,6 +10,8 @@ import student.examples.businessuservice.domain.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
 
+	User findByToken(String token);
+	
 	
 
 }

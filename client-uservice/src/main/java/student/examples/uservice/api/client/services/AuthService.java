@@ -1,7 +1,5 @@
 package student.examples.uservice.api.client.services;
 
-import java.util.Map;
-import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -9,7 +7,6 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import student.examples.grpc.UserSignupServiceGrpc;
 import student.examples.grpc.UserSignupServiceGrpc.UserSignupServiceBlockingStub;
-import student.examples.grpc.UserSignupServiceOuterClass;
 import student.examples.grpc.UserSignupServiceOuterClass.UserSignupDtoRequest;
 import student.examples.grpc.UserSignupServiceOuterClass.UserSignupResponse;
 import student.examples.grpc.UserWithdrawServiceGrpc;
@@ -25,7 +22,7 @@ public class AuthService {
 	public static final String BUSINESS_SERVICE_URL = "localhost:8081";
 	
 	/**
-	 * Send user DTO to business uservice using grpc to add user in the DB
+	 * Send request to business uservice using grpc to add user in the DB
 	 * 
 	 * @param userDto
 	 */
@@ -43,18 +40,14 @@ public class AuthService {
                 .build();
 
         UserSignupResponse response = stub.signup(request);
-//
-//        Map<String, String> mapa = response.getMessagesMap();
-//        for (Map.Entry<String, String> entry: mapa.entrySet()) {
-//        	System.out.println(entry.getKey() + " " + entry.getValue());
-//        }
 
         channel.shutdownNow();
+        
 	}
 	
 	
 	/**
-	 * Send user DTO to business uservice using grpc to add user in the DB
+	 * Send request to business uservice using grpc to add user in the DB
 	 * 
 	 * @param userDto
 	 */
@@ -77,7 +70,7 @@ public class AuthService {
 	
 	
 	/**
-	 * Send user DTO to business uservice using grpc to send confirmation email to remove user from the DB
+	 * Send request to business uservice using grpc to send confirmation email to remove user from the DB
 	 * 
 	 * @param userDto
 	 */
@@ -101,7 +94,7 @@ public class AuthService {
 	}
 	
 	/**
-	 * Send user DTO to business uservice using grpc to remove user from the DB
+	 * Send request to business uservice using grpc to remove user from the DB
 	 * 
 	 * @param userDto
 	 */

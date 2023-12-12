@@ -1,6 +1,8 @@
-package student.examples.businessuservice.services;
+package student.examples.messaginguservice.services;
 
 import java.util.Properties;
+
+import org.springframework.stereotype.Service;
 
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
@@ -12,9 +14,10 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
-import student.examples.businessuservice.util.EmailType;
+import student.examples.messaginguservice.util.EmailType;
 
-public class EmailSender {
+@Service
+public class EmailSenderService {
 	
 	final String senderEmail = "maks.demianov@gmail.com";
     final String senderPassword = "balw ahei nalz pnma";
@@ -22,7 +25,7 @@ public class EmailSender {
     private Properties properties;
     private Session session;
     
-    public EmailSender() {
+    public EmailSenderService() {
     	setup();
     }
     

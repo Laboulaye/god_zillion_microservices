@@ -16,9 +16,13 @@ import net.devh.boot.grpc.server.service.GrpcService;
 
 @GrpcService
 public class SignupRequestServiceImpl extends UserSignupServiceGrpc.UserSignupServiceImplBase{
+	
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private CommunicationService communicationService;
 
 	@Override
     public void signup(UserSignupServiceOuterClass.UserSignupDtoRequest request,
@@ -33,12 +37,10 @@ public class SignupRequestServiceImpl extends UserSignupServiceGrpc.UserSignupSe
         User user = new User(id, request.getUserName(), request.getEmail(), request.getPassword(), token);
 
         userRepository.save(user);
-        
-        EmailSender emailSender = new EmailSender();
-		emailSender.send(user.getEmail(), user.getToken(), EmailType.REGISTRATION);
-        
         System.out.println("User created in the DB");
         
+		communicationService.sendPostRequestWithBody(user.getEmail(), user.getToken(), EmailType.REGISTRATION);
+		
         UserSignupServiceOuterClass.UserSignupResponse response = UserSignupServiceOuterClass.UserSignupResponse
                 .newBuilder().setMessage("success")
                 .build();
@@ -90,4 +92,7 @@ public class SignupRequestServiceImpl extends UserSignupServiceGrpc.UserSignupSe
         String token = new String(encodedBytes, StandardCharsets.UTF_8);
         return token;
     }
+	
+	
+	
 }

@@ -17,6 +17,10 @@ public class WithdrawRequestServiceImpl extends UserWithdrawServiceGrpc.UserWith
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private CommunicationService communicationService;
+	
 
 	@Override
     public void withdraw(UserWithdrawDtoRequest request, StreamObserver<UserWithdrawResponse> responseObserver) {
@@ -33,10 +37,7 @@ public class WithdrawRequestServiceImpl extends UserWithdrawServiceGrpc.UserWith
         	return;
         }
         
-        EmailSender emailSender = new EmailSender();
-		emailSender.send(user.getEmail(), user.getToken(), EmailType.WITHDRAW);
-        
-        System.out.println("Email was sent");
+        communicationService.sendPostRequestWithBody(user.getEmail(), user.getToken(), EmailType.WITHDRAW);
         
         UserWithdrawResponse response = UserWithdrawResponse.newBuilder()
         		.setMessage("success")
